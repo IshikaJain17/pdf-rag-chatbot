@@ -38,9 +38,15 @@ class VectorStore:
     
     def _ensure_index_exists(self):
         """Create the Pinecone index if it doesn't exist"""
-        existing_indexes = [index.name for index in self.pc.list_indexes()]
+        try:
+            existing_indexes = self.pc.list_indexes()
+            index_names = [idx.name for idx in existing_indexes]
+        except Exception:
+            # Fallback for different Pinecone SDK versions
+            existing_indexes = self.pc.list_indexes()
+            index_names = list(existing_indexes.names()) if hasattr(existing_indexes, 'names') else [str(idx) for idx in existing_indexes]
         
-        if settings.pinecone_index_name not in existing_indexes:
+        if settings.pinecone_index_name not in index_names:
             self.pc.create_index(
                 name=settings.pinecone_index_name,
                 dimension=self.dimension,
