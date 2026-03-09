@@ -1,6 +1,7 @@
 A powerful RAG (Retrieval-Augmented Generation) based chatbot that allows you to upload PDF documents and ask questions about them. The system automatically processes PDFs, stores them in a vector database, and uses OpenAI's models to provide intelligent answers based on your documents.
 
 ![PDF Chatbot](https://img.shields.io/badge/Python-3.9%2B-blue) ![FastAPI](https://img.shields.io/badge/FastAPI-0.109-green) ![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4-purple)
+
 <img width="1907" height="980" alt="image" src="https://github.com/user-attachments/assets/f8100d78-224e-40dd-9cc2-3403352f05a8" />
 
 ## Features
